@@ -1,5 +1,6 @@
 from tkinter import Tk, BOTH, Canvas
 
+# Window Class
 class Window:
 
   def __init__(self, width, height):
@@ -28,6 +29,14 @@ class Window:
     self.is_running = True
     while(self.is_running):
       self.redraw()
+
+
+# Point Class
+class Point:
+  def __init__(self):
+    self.x = 0
+    self.y = 0
+
 
 
 win = Window(800,600)
