@@ -30,6 +30,9 @@ class Window:
     while(self.is_running):
       self.redraw()
 
+  def draw_line(self, line, color):
+    line.draw(self.canvas, color)
+
 
 # Point Class
 class Point:
@@ -45,14 +48,24 @@ class Line:
 
   def draw(self, canvas, color):
     canvas.create_line(
-      point_a.x,
-      point_a.y
-      point_b.x,
-      point_b.y,
+      self.point_a.x,
+      self.point_a.y,
+      self.point_b.x,
+      self.point_b.y,
       fill=color,
       width=2
     )
     canvas.pack()
 
 win = Window(800,600)
+
+first_point = Point()
+
+second_point = Point()
+second_point.x = 50
+second_point.y = 50
+
+red_line = Line(first_point, second_point)
+win.draw_line(red_line, "red")
+
 win.wait_for_close()
