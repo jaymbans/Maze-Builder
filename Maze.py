@@ -37,7 +37,22 @@ class Point:
     self.x = 0
     self.y = 0
 
+# Line Class
+class Line:
+  def __init__(self, point_a, point_b):
+    self.point_a = point_a
+    self.point_b = point_b
 
+  def draw(self, canvas, color):
+    canvas.create_line(
+      point_a.x,
+      point_a.y
+      point_b.x,
+      point_b.y,
+      fill=color,
+      width=2
+    )
+    canvas.pack()
 
 win = Window(800,600)
 win.wait_for_close()
