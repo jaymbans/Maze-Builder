@@ -55,7 +55,6 @@ class Line:
       fill=color,
       width=2
     )
-    canvas.pack()
 
 # Cell Class
 class Cell:
@@ -98,3 +97,20 @@ class Cell:
     if(self.has_bottom_wall):
       bottom_wall = Line(Point(x1, y2),Point(x2,y2))
       bottom_wall.draw(self._win.canvas, "black")
+  
+  def draw_move(self, to_cell, undo=False):
+    # handle self
+    self_mid_x = (self._x1+self._x2)//2
+    self_mid_y = (self._y1+self._y2)//2
+
+    #handle to cell
+    to_cell_mid_x = (to_cell._x1+to_cell._x2)//2
+    to_cell_mid_y = (to_cell._y1+to_cell._y2)//2
+
+    line = Line(Point(self_mid_x, self_mid_y),Point(to_cell_mid_x, to_cell_mid_y))
+
+    color = "red"
+    if(undo):
+      color = "gray"
+
+    line.draw(self._win.canvas, color)
