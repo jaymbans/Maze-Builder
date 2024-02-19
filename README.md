@@ -1,6 +1,9 @@
 # Maze-Builder
 Maze builder is a simple python algorithm that solves a maze utilizing recursion. Please see the directions the overview and directions below:
 
+# Image
+<img src="/maze-game-screenshot.png">
+
 ## Overview
 <ul>
   <li>Using Python's Tkinter library I have created a maze game which using depth first search (DFS) to arrive at the solution</li>
