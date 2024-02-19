@@ -58,7 +58,7 @@ class Line:
 
 # Cell Class
 class Cell:
-  def __init__(self, window):
+  def __init__(self, window=None):
     self.has_left_wall = True
     self.has_right_wall = True
     self.has_top_wall = True
@@ -69,6 +69,8 @@ class Cell:
     self._y2 = None
     self._win = window
     self.color = "black"
+    self.hidden_wall = "white"
+    self.visited = False
 
 
   def draw(self, x1, y1, x2, y2):
@@ -79,24 +81,29 @@ class Cell:
     self._y2 = y2
     
     # set top wall
-    if(self.has_top_wall):
-      top_wall = Line(Point(x1, y1),Point(x2,y1))
-      top_wall.draw(self._win.canvas, "black")
+    top_wall = Line(Point(x1, y1),Point(x2,y1))
+    if(self._win):
+      top_wall.draw(self._win.canvas,
+      "black" if self.has_top_wall  else self.hidden_wall)
 
     # set left wall
-    if(self.has_left_wall):
-      left_wall = Line(Point(x1, y1),Point(x1,y2))
-      left_wall.draw(self._win.canvas, "black")
+    left_wall = Line(Point(x1, y1),Point(x1,y2))
+    if(self._win):
+      left_wall.draw(self._win.canvas,
+      "black" if self.has_left_wall  else self.hidden_wall)
 
     # set right wall
-    if(self.has_right_wall):
-      right_wall = Line(Point(x2, y1),Point(x2,y2))
-      right_wall.draw(self._win.canvas, "black")
+    right_wall = Line(Point(x2, y1),Point(x2,y2))
+    if(self._win):
+      right_wall.draw(self._win.canvas,
+      "black" if self.has_right_wall  else self.hidden_wall)
 
     # set bottom wall
-    if(self.has_bottom_wall):
-      bottom_wall = Line(Point(x1, y2),Point(x2,y2))
-      bottom_wall.draw(self._win.canvas, "black")
+    bottom_wall = Line(Point(x1, y2),Point(x2,y2))
+    if(self._win):
+      bottom_wall.draw(self._win.canvas,
+       "black" if self.has_bottom_wall  else self.hidden_wall)
+      
   
   def draw_move(self, to_cell, undo=False):
     # handle self

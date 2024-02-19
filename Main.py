@@ -13,6 +13,7 @@ def main():
   # cell_one.draw_move(cell_two, True)
   maze = Maze(10,10,6,6,50,50, win)
   
+
   win.wait_for_close()
 
 
